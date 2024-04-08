@@ -1,6 +1,25 @@
+loginData = {
+    'token': '1324654esa5d41432',
+    'status': 1,
+    'errMsg': '',
+    'userinfo': {
+        'username': '鲸要我保护海',
+        'icon': 'https://img1.baidu.com/it/u=1696401964,991779968&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500',
+        'phone_number': '17600000000',
+        'user_status': 1
+    }
+}
+
+verCodeData = {
+    'code': '874562',
+    'token': '1324654esa5d41432',
+    'status': 1,
+}
+
 # 用户详情 /userinfo
 userInfoData = {
     'openid': 'wx12345678',
+    'token': '1324654esa5d41432',
     'username': '鲸要我保护海',
     'icon': 'https://img1.baidu.com/it/u=1696401964,991779968&fm=253&fmt=auto&app=120&f=JPEG?w=500&h=500',
     'phone_number': '17600000000',
@@ -283,3 +302,202 @@ chargingListData = [
         'id': 5
     }
 ]
+
+# 获取常用筛选信息 /getInCommonUseFilter
+inCommonUseFilterData = [
+    {
+        'name': "快速稳定",
+        'id': 0,
+        'active': False
+    },
+    {
+        'name': "VIP站",
+        'id': 1,
+        'active': False
+    },
+    {
+        'name': "免费停车",
+        'id': 2,
+        'active': False
+    },
+    {
+        'name': "快电优选",
+        'id': 3,
+        'active': False
+    },
+    {
+        'name': "饮用水",
+        'id': 4,
+        'active': False
+    }
+]
+
+chargingdetaildata = {
+    'name': '澳门中心充电站',
+    'icon': 'https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2023%2F0515%2Fe79896dbj00rup4ln00bhc000hs009rg.jpg&thumbnail=660x2147483647&quality=80&type=jpg',
+    'images': [
+        {
+            'title': '室外引导',
+            'datas': [
+                {
+                    'step': 1,
+                    'url': 'https://inews.gtimg.com/newsapp_bt/0/14836123749/641'
+                },
+                {
+                    'step': 2,
+                    'url': 'https://img-issue.yunnan.cn/uploadfile/test/2021/0915/202109151626077135.jpg'
+                }
+            ]
+        },
+        {
+            'title': '室内引导',
+            'datas': [
+                {
+                    'step': 1,
+                    'url': 'https://inews.gtimg.com/newsapp_bt/0/14836123749/641'
+                },
+                {
+                    'step': 2,
+                    'url': 'https://img-issue.yunnan.cn/uploadfile/test/2021/0915/202109151626077135.jpg'
+                }
+            ]
+        }
+    ],
+    'parking_charge': '限时免费停车',
+    'p_charge_tips': '一小时以内免费，超过一小时 2元/时',
+    'invoice': '公司开票',
+    'invoice_tips': '24小时内免费开票',
+    'service_time': '24小时',
+    'service_status': '运营中',
+    'curr_price': 1.14,
+    'describe': [
+        '极客能源',
+        '超级快充',
+        '底下车库'
+    ],
+    'distance': '500m',
+    'position': {
+        'title': '北京市昌平区沙河站地铁站',
+        'longitude': 116.291560,
+        'latitude': 40.158619
+    },
+    'tips': '三分钟前有人充电',
+    'site': [
+        {
+            'type': '快充',
+            'count': 10,
+            'unused': 2,
+            'max_power': '120Kw'
+        },
+        {
+            'type': '慢充',
+            'count': 10,
+            'unused': 2,
+            'max_power': '60Kw'
+        }
+    ],
+    'price': {
+        'normal': 1.14,
+        'vip': 1.09,
+        'price_tips': 'VIP优惠价格有幅度限制，VIP价格服务优惠0.05元/度',
+        'price_detail': [
+            {
+                'time': '00:00 - 06:00',
+                'type': '朱佩娘价格',
+                'price': 1.89,
+                'electricity': 0.84,
+                'service_charge': 1.05
+            },
+            {
+                'time': '06:00 - 12:00',
+                'type': '朱佩娘价格',
+                'price': 1.89,
+                'electricity': 0.84,
+                'service_charge': 1.05
+            },
+            {
+                'time': '12:00 - 24:00',
+                'type': '朱佩娘价格',
+                'price': 1.89,
+                'electricity': 0.84,
+                'service_charge': 1.05
+            }
+        ],
+        'charging_pile': [
+            {
+                'status': '空闲',
+                'max_power': '360Kw',
+                'code': '000100214000168A0',
+                'id': 0
+            },
+            {
+                'status': '空闲',
+                'max_power': '360Kw',
+                'code': '000100214000169A0',
+                'id': 1
+            },
+            {
+                'status': '空闲',
+                'max_power': '360Kw',
+                'code': '000100214000177A0',
+                'id': 2
+            }
+        ],
+        'around_service': [
+            {
+                'title': '卫生间',
+                'id': 0,
+                'data': [
+                    {
+                        'id': 0,
+                        'name': '公共厕所',
+                        'postion': '地铁站旁公厕',
+                        'distance': '300m'
+                    },
+                    {
+                        'id': 1,
+                        'name': '公共厕所',
+                        'postion': '地铁站旁商场公厕',
+                        'distance': '600m'
+                    }
+                ]
+            },
+            {
+                'title': '洗车',
+                'id': 1,
+                'data': [
+                    {
+                        'id': 0,
+                        'name': '公共厕所',
+                        'postion': '地铁站旁公厕',
+                        'distance': '300m'
+                    },
+                    {
+                        'id': 1,
+                        'name': '公共厕所',
+                        'postion': '地铁站旁商场公厕',
+                        'distance': '600m'
+                    }
+                ]
+            },
+            {
+                'title': '美食',
+                'id': 2,
+                'data': [
+                    {
+                        'id': 0,
+                        'name': '公共厕所',
+                        'postion': '地铁站旁公厕',
+                        'distance': '300m'
+                    },
+                    {
+                        'id': 1,
+                        'name': '公共厕所',
+                        'postion': '地铁站旁商场公厕',
+                        'distance': '600m'
+                    }
+                ]
+            }
+        ]
+    }
+}

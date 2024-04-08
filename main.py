@@ -21,6 +21,22 @@ def resolveData(request, data):
         info['data'] = data
     return jsonify(info)
 
+@app.route('/login', methods=['POST'])
+def userlogin():
+    return resolveData(request, index_data.loginData)
+
+@app.route('/sendVerCode', methods=['POST'])
+def sendVerCode():
+    return resolveData(request, index_data.verCodeData)
+
+@app.route('/verCodeLogin', methods=['POST'])
+def verCodeLogin():
+    return resolveData(request, index_data.loginData)
+
+@app.route('/setRegisterPassword', methods=['POST'])
+def setLoginPassword():
+    return resolveData(request, index_data.loginData)
+
 @app.route('/userinfo', methods=['POST'])
 def userinfo():
     return resolveData(request, index_data.userInfoData)
@@ -41,9 +57,23 @@ def setFilterDetail():
 def setQuickFilter():
     return resolveData(request, {})
 
+@app.route('/getInCommonUseFilter', methods=['POST'])
+def getInUseFilter():
+    return resolveData(request, index_data.inCommonUseFilterData)
+
+@app.route('/setInCommonUseFilter', methods=['POST'])
+def setInUseFilter():
+    return resolveData(request, {})
+
+
 @app.route('/getChargingStationList', methods=['POST'])
 def getlist():
     return resolveData(request, index_data.chargingListData)
+
+@app.route('/getChargingStationDetail', methods=['POST'])
+def getchargingdetail():
+    return resolveData(request, index_data.chargingdetaildata)
+
 
 if __name__ == '__main__':
     app.run(host='192.168.0.164', port=8080, debug=True)
