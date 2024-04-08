@@ -5,7 +5,7 @@
 #### 域名：https://zhupeiniang.com
 
 * * *
-##### 用预登录:  /userinfo
+#### 用户预登录:  /userinfo
 用户首次使用小程序默认自动登录，无需认证手机号等实名信息。
 
 **请求类型** ：POST
@@ -28,14 +28,135 @@ type: <u>JSON</u>
 
 | 参数名 | 类型 |说明  |  
 | --- | --- | --- | 
-| openId | string | 用户服务端唯一id标识 |  
+| token | string | 用户服务端唯一id标识 | 
 | username |string  |用户名  |  
 | icon | string | 用户头像地址 |
 |phone_number |number |用户绑定手机号 |
 |user_status |number |用户账号信息，例：1=白名单用户、0=黑名单用户 |
 
+#### 登录:  /login
+个别功能触发真实登录获取用户信息
+
+**请求类型** ：POST
+
+**requset 请求参数说明**
+
+| 参数名 | 类型 |必填  |说明  |
+| --- | --- | --- | --- |
+|token|string|是|用户唯一id标识 |
+| number |string  |是  |登录手机号  |
+| password |string  |是  |登录密码 |
+
+**data返回参数说明**
+type: <u>JSON</u>
+
+| 参数名 | 类型 |说明  |  
+| --- | --- | --- | 
+| token | string | 用户服务端唯一id标识 | 
+| status | number | 成功:1, 失败: 0| 
+| errMsg | string | 登录失败原因描述| 
+| userinfo | json | 见下方userinfo描述，失败可为空| 
+
+**userinfo返回参数说明**
+
+| 参数名 | 类型 |说明  |  
+| --- | --- | --- | 
+| username |string  |用户名  |  
+| icon | string | 用户头像地址 |
+|phone_number |number |用户绑定手机号 |
+|user_status |number |用户账号信息，例：1=白名单用户、0=黑名单用户 |
+
+#### 获取验证码:  /sendVerCode
+发送上传手机号验证码
+
+**请求类型** ：POST
+
+**requset 请求参数说明**
+
+| 参数名 | 类型 |必填  |说明  |
+| --- | --- | --- | --- |
+|token|string|是|用户唯一id标识 |
+| number |string  |是  |登录手机号  |
+| type |string  |是  |登录: login 注册: register  |
+
+**data返回参数说明**
+type: <u>JSON</u>
+
+| 参数名 | 类型 |说明  |  
+| --- | --- | --- | 
+| token | string | 用户服务端唯一id标识 | 
+| status | number | 成功:1, 失败: 0| 
+| errMsg | string | 验证码获取失败原因描述| 
+
+
+#### 验证码登录:  /verCodeLogin
+利用验证码方式登录
+
+**请求类型** ：POST
+
+**requset 请求参数说明**
+
+| 参数名 | 类型 |必填  |说明  |
+| --- | --- | --- | --- |
+|token|string|是|用户唯一id标识 |
+| number |string  |是  |登录手机号  |
+| code |string  |是  |验证码  |
+
+**data返回参数说明**
+type: <u>JSON</u>
+
+| 参数名 | 类型 |说明  |  
+| --- | --- | --- | 
+| token | string | 用户服务端唯一id标识 | 
+| status | number | 成功:1, 失败: 0| 
+| errMsg | string | 登录失败原因描述| 
+| userinfo | json | 见下方userinfo描述，失败可为空| 
+
+**userinfo返回参数说明**
+
+| 参数名 | 类型 |说明  |  
+| --- | --- | --- | 
+| username |string  |用户名  |  
+| icon | string | 用户头像地址 |
+|phone_number |number |用户绑定手机号 |
+|user_status |number |用户账号信息，例：1=白名单用户、0=黑名单用户 |
+
+#### 注册:  /setRegisterPassword
+设置注册账号验证码
+
+**请求类型** ：POST
+
+**requset 请求参数说明**
+
+| 参数名 | 类型 |必填  |说明  |
+| --- | --- | --- | --- |
+|token|string|是|用户唯一id标识 |
+| number |string  |是  |登录手机号  |
+| password |string  |是  |登录密码  |
+
+
+**data返回参数说明**
+type: <u>JSON</u>
+
+| 参数名 | 类型 |说明  |  
+| --- | --- | --- | 
+| token | string | 用户服务端唯一id标识 | 
+| status | number | 成功:1, 失败: 0| 
+| errMsg | string | 登录失败原因描述| 
+| userinfo | json | 见下方userinfo描述，失败可为空| 
+
+**userinfo返回参数说明**
+
+| 参数名 | 类型 |说明  |  
+| --- | --- | --- | 
+| username |string  |用户名  |  
+| icon | string | 用户头像地址 |
+|phone_number |number |用户绑定手机号 |
+|user_status |number |用户账号信息，例：1=白名单用户、0=黑名单用户 |
+
+
 * * *
-##### 获取广告位数据 /getBannerListData
+#### 获取广告位数据 /getBannerListData
 首页广告位广告推送。
 **请求类型** ：POST
 
@@ -43,7 +164,7 @@ type: <u>JSON</u>
 
 | 参数名 | 类型 |必填  |说明  |
 | --- | --- | --- | --- |
-| openid |string  |是  |用户唯一标识  |
+| token |string  |是  |用户唯一标识  |
 
 **data返回参数说明**
 type: <u>Array</u>
@@ -55,7 +176,7 @@ type: <u>Array</u>
 |href | string|跳转广告资源链接 |
 
 * * *
-##### 获取筛选功能详细配置数据选项 /getFilterDetailOption
+#### 获取筛选功能详细配置数据选项 /getFilterDetailOption
 首页筛选功能，更多筛选内容数据。
 
 **请求类型** ：POST
@@ -64,7 +185,7 @@ type: <u>Array</u>
 
 | 参数名 | 类型 |必填  |说明  |
 | --- | --- | --- | --- |
-| openid |string  |是  |用户唯一标识  |
+| token |string  |是  |用户唯一标识  |
 
 **data返回参数说明**
 type: <u>Array</u>
@@ -82,7 +203,7 @@ type: <u>Array</u>
 |active | boolean|当前选项是否选中激活|
 
 * * *
-##### 设置筛选功能详细配置选项 /setFilterDetailOption
+#### 设置筛选功能详细配置选项 /setFilterDetailOption
 设置首页详细筛选功能。
 
 **请求类型** ：POST
@@ -91,7 +212,7 @@ type: <u>Array</u>
 
 | 参数名 | 类型 |必填  |说明  |
 | --- | --- | --- | --- |
-| openid |string  |是  |用户唯一标识  |
+| token |string  |是  |用户唯一标识  |
 | data |array  |是  |设置筛选项配置信息，见下方data描述  |
 
 **data参数说明**
@@ -106,7 +227,7 @@ type: <u>JSON</u>
 返回基本状态信息
 
 * * *
-##### 设置快捷筛选功能配置选项 /setQuickFilterOption
+#### 设置快捷筛选功能配置选项 /setQuickFilterOption
 首页3个分类快捷筛选选项设置 (价格较低、订车费、快慢充)。
 
 **请求类型** ：POST
@@ -115,7 +236,7 @@ type: <u>JSON</u>
 
 | 参数名 | 类型 |必填  |说明  |
 | --- | --- | --- | --- |
-| openid |string  |是  |用户唯一标识  |
+| token |string  |是  |用户唯一标识  |
 | data |json  |是  |设置筛选项配置信息，见下方data描述  |
 
 **data参数说明**
@@ -130,7 +251,52 @@ type: <u>JSON</u>
 返回基本状态信息
 
 * * *
-##### 获取电站列表信息 /getChargingStationList
+#### 获取首页用户常用筛选项数据/getInCommonUseFilter
+首页用户常用筛选项
+
+**请求类型** ：POST
+
+**requset 请求参数说明**
+
+| 参数名 | 类型 |必填  |说明  |
+| --- | --- | --- | --- |
+| token |string  |是  |用户唯一标识  |
+
+**data返回参数说明**
+type <u>Array</u>
+
+| 参数名 | 类型 |说明  |
+| --- | --- | --- |
+|id|number|唯一标识|
+|name|string|筛选标题名称|
+|active|boolean|当前选项是否激活|
+
+* * *
+#### 设置首页用户常用筛选项数据/setInCommonUseFilter
+首页用户常用筛选项
+
+**请求类型** ：POST
+
+**requset 请求参数说明**
+
+| 参数名 | 类型 |必填  |说明  |
+| --- | --- | --- | --- |
+| token |string  |是  |用户唯一标识  |
+| data |array  |是  |常用筛选项数据，见下方data描述 |
+
+**data参数说明**
+数据格式同上(/getInCommonUseFilter)接口返回值相同
+只更改active参数数据
+| 参数名 | 类型 |必填  |说明  |
+| --- | --- | --- | --- |
+| active |boolean  |是  |true/false 启用/未启用当前筛选项  |
+
+**data返回参数说明**
+type: <u>JSON</u>
+返回基本状态信息
+
+* * *
+#### 获取电站列表信息 /getChargingStationList
 根据用户当前位置，推送附近充电站信息。
 
 ##### 请求
@@ -140,7 +306,7 @@ type: <u>JSON</u>
 
 | 参数名 | 类型 |必填  |说明  |
 | --- | --- | --- | --- |
-| openid |string  |是  |用户唯一标识  |
+| token |string  |是  |用户唯一标识  |
 | latitude |number  |是  |纬度  |
 | longitude |number  |是  |经度 |
 | cityCode |  string| 否 |城市编码  |
@@ -151,7 +317,7 @@ type: <u>JSON</u>
 | pagesize| number|否|列表数量，默认全部
 |pagenumber |number |否 |当前页下表，默认为第0页|
 
-**data 参数说明**
+**data 返回参数说明**
 type: <u>Array</u>
 
 | 参数名 | 类型 |说明  |
@@ -166,3 +332,116 @@ type: <u>Array</u>
 |car_count|number|车位总数|
 |used|number|已使用车位数|
 |p_tips|string|停车收费提示信息|
+
+* * *
+#### 获取当前电站详细信息数据/getChargingStationDetail
+选择电站条目，获取详细数据信息。
+
+##### 请求
+**请求类型** ：POST
+
+**requset 请求参数说明**
+
+| 参数名 | 类型 |必填  |说明  |
+| --- | --- | --- | --- |
+| token |string  |是  |用户唯一标识  |
+| id |  number| 是 |电站标识  |
+| name |  string| 是 |电站名称  |
+
+**data 返回参数说明**
+type: <u>JSON</u>
+
+| 参数名 | 类型 |说明  |
+| --- | --- | --- |
+|name|string|充电站名称|
+|icon|string|电站缩略图|
+|images|array|电站位置指引图，见下方images描述|
+|parking_charge|string|停车收费状态|
+|p_charge_tips|string|停车收费状态描述|
+|invoice|string|开票方式|
+|invoice_tips|string|开票描述|
+|curr_price|number|当前充电价格|
+|describe|array|电站描述标签|
+|distance|string|距离电站距离|
+|position|json|电站位置信息，见下方position描述|
+|tips|string|电站广播提示|
+|site|array|充电桩分类，见下方site描述|
+|price|json|收费规格，见下方price描述|
+
+**images 返回参数说明**
+
+| 参数名 | 类型 |说明  |
+| --- | --- | --- |
+|title|string|指引图标题|
+|datas|array|指引图数据，见下方datas描述|
+
+**images >> datas返回参数说明**
+
+| 参数名 | 类型 |说明  |
+| --- | --- | --- |
+|step|number|步骤序号|
+|url|string|指引图链接|
+
+**position 返回参数说明**
+
+| 参数名 | 类型 |说明  |
+| --- | --- | --- |
+|title|string|电站位置描述|
+|longitude|number|经度|
+|latitude|number|纬度|
+
+**site返回参数说明**
+
+| 参数名 | 类型 |说明  |
+| --- | --- | --- |
+|type|string|充电桩类型|
+|count|number|充电桩总数|
+|unused|number|未使用充电桩数量|
+|max_power|string|最大功耗|
+
+**price返回参数说明**
+
+| 参数名 | 类型 |说明  |
+| --- | --- | --- |
+|normal|number|常规充电价格|
+|normal|number|vip充电价格|
+|price_tips|string|充电价格描述|
+|price_detail|array|充电价格详情，见下方price_detail描述|
+|charging_pile|array|充电桩状态，见下方charging_pile描述|
+|around_service|array|周边服务，见下方around_service描述|
+
+**price >> price_detail返回参数说明**
+
+| 参数名 | 类型 |说明  |
+| --- | --- | --- |
+|time|string|时间段|
+|type|string|电价类型|
+|price|number|此时段价格|
+|electricity|number|此时段电费|
+|service_charge|number|此时段服务费|
+
+**price >> charging_pile返回参数说明**
+
+| 参数名 | 类型 |说明  |
+| --- | --- | --- |
+|id|number|唯一标识|
+|status|string|充电桩状态|
+|max_power|string|最大功率|
+|code|string|充电枪编码|
+
+**price >> around_service返回参数说明**
+
+| 参数名 | 类型 |说明  |
+| --- | --- | --- |
+|id|number|唯一标识|
+|title|string|周边分类标题|
+|data|array|分类数据，见下方data描述|
+
+**price >> around_service >> data返回参数说明**
+
+| 参数名 | 类型 |说明  |
+| --- | --- | --- |
+|id|number|唯一标识|
+|name|string|场景名称|
+|position|string|场景位置描述|
+|distance|string|距场景距离|
