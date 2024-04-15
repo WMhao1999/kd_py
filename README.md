@@ -445,3 +445,44 @@ type: <u>JSON</u>
 |name|string|场景名称|
 |position|string|场景位置描述|
 |distance|string|距场景距离|
+
+* * *
+#### 获取支付订单信息/getPayInfo
+生成支付订单信息
+##### 请求
+**请求类型** ：POST
+
+**requset 请求参数说明**
+
+| 参数名 | 类型 |必填  |说明  |
+| --- | --- | --- | --- |
+| token |string  |是  |用户唯一标识  |
+| orderType |string  |是  |订单类型，见下方orderType类型描述  |
+| order |json  |是  |订单数据信息，见下方order描述  |
+
+**orderType类型说明**
+| 类型标识 | 说明 |
+| --- | ---|
+| balance |账户余额充值  |
+| recharge |充电支付  |
+
+**order数据说明**
+| 参数名 | 类型 |必填  |说明  |
+| --- | --- | --- | --- |
+| id |number  |是  |商品id标识  |
+| count |number  |是  |商品数量  |
+| price |number  |是  |商品单价  |
+| discount_coupon |json  |否  |优惠券  |
+
+**data 返回参数说明**
+type: <u>JSON</u>
+
+| 参数名 | 类型 |说明  |
+| --- | --- | --- |
+|appid|string|小程序id|
+|noncestr|string|随机字符串|
+|package|string|固定值|
+|partnerid|string|微信支付商户号|
+|prepayid|string|统一下单订单号|
+|timestamp|number|时间戳 (单位: 秒)|
+|sign|string|签名 MD5/RSA |
